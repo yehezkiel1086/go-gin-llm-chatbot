@@ -2,9 +2,9 @@ package gemini
 
 import (
 	"context"
-	"go-gemini-llm/internal/adapter/config"
 	"mime/multipart"
 
+	"github.com/yehezkiel1086/go-gin-llm-chatbot/internal/adapter/config"
 	"google.golang.org/genai"
 )
 

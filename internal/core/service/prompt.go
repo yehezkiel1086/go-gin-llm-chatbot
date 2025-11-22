@@ -2,8 +2,9 @@ package service
 
 import (
 	"context"
-	"go-gemini-llm/internal/adapter/llm/gemini"
 	"mime/multipart"
+
+	"github.com/yehezkiel1086/go-gin-llm-chatbot/internal/adapter/llm/gemini"
 )
 
 type PromptService struct {

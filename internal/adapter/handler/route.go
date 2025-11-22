@@ -1,9 +1,8 @@
 package handler
 
 import (
-	"go-gemini-llm/internal/adapter/config"
-
 	"github.com/gin-gonic/gin"
+	"github.com/yehezkiel1086/go-gin-llm-chatbot/internal/adapter/config"
 )
 
 type Route struct {

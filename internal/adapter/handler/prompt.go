@@ -1,11 +1,11 @@
 package handler
 
 import (
-	"go-gemini-llm/internal/core/port"
 	"mime/multipart"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/yehezkiel1086/go-gin-llm-chatbot/internal/core/port"
 )
 
 type PromptHandler struct {

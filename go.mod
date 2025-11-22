@@ -1,4 +1,4 @@
-module go-gemini-llm
+module github.com/yehezkiel1086/go-gin-llm-chatbot
 
 go 1.24.4
 

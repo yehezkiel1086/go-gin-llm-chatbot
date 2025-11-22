@@ -3,11 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
-	"go-gemini-llm/internal/adapter/config"
-	"go-gemini-llm/internal/adapter/handler"
-	"go-gemini-llm/internal/adapter/llm/gemini"
-	"go-gemini-llm/internal/core/service"
 	"log"
+
+	"github.com/yehezkiel1086/go-gin-llm-chatbot/internal/adapter/config"
+	"github.com/yehezkiel1086/go-gin-llm-chatbot/internal/adapter/handler"
+	"github.com/yehezkiel1086/go-gin-llm-chatbot/internal/adapter/llm/gemini"
+	"github.com/yehezkiel1086/go-gin-llm-chatbot/internal/core/service"
 )
 
 func main() {
