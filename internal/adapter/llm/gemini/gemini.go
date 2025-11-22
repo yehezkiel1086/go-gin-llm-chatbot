@@ -3,6 +3,7 @@ package gemini
 import (
 	"context"
 	"go-gemini-llm/internal/adapter/config"
+	"mime/multipart"
 
 	"google.golang.org/genai"
 )
@@ -39,4 +40,32 @@ func (g *Gemini) GenerateTextToText(ctx context.Context, prompt string) (string,
 	}
 
 	return result.Text(), nil
+}
+
+func (g *Gemini) GenerateImageToText(ctx context.Context, prompt string, file *multipart.FileHeader) (string, error) {
+	uploadedFile, err := g.client.Files.UploadFromPath(ctx, "./assets/" + file.Filename, nil)
+	if err != nil {
+		return "", err
+	}
+
+  parts := []*genai.Part{
+		genai.NewPartFromText(prompt),
+		genai.NewPartFromURI(uploadedFile.URI, uploadedFile.MIMEType),
+  }
+
+  contents := []*genai.Content{
+		genai.NewContentFromParts(parts, genai.RoleUser),
+  }
+
+  result, err := g.client.Models.GenerateContent(
+		ctx,
+		g.conf.AIModel,
+		contents,
+		nil,
+  )
+	if err != nil {
+		return "", err
+	}
+
+  return result.Text(), nil
 }

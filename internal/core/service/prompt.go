@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"go-gemini-llm/internal/adapter/llm/gemini"
+	"mime/multipart"
 )
 
 type PromptService struct {
@@ -20,5 +21,14 @@ func (s *PromptService) TextToTextPrompt(ctx context.Context, prompt string) (st
 	if err != nil {
 		return "", err
 	}
+	return res, nil
+}
+
+func (s *PromptService) ImageToTextPrompt(ctx context.Context, prompt string, file *multipart.FileHeader) (string, error) {
+	res, err := s.llm.GenerateImageToText(ctx, prompt, file)
+	if err != nil {
+		return "", err
+	}
+
 	return res, nil
 }
