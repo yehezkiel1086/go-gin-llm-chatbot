@@ -19,6 +19,7 @@ func InitRoute(
 
 	// public routes
 	pb.POST("/prompt/text-to-text", promptHandler.TextToTextPrompt)
+	pb.POST("/prompt/stream-text-to-text", promptHandler.StreamTextToTextPrompt)
 	pb.POST("/prompt/image-to-text", promptHandler.ImageToTextPrompt)
 
 	// protected routes

@@ -2,6 +2,7 @@ package gemini
 
 import (
 	"context"
+	"iter"
 	"mime/multipart"
 
 	"github.com/yehezkiel1086/go-gin-llm-chatbot/internal/adapter/config"
@@ -40,6 +41,15 @@ func (g *Gemini) GenerateTextToText(ctx context.Context, prompt string) (string,
 	}
 
 	return result.Text(), nil
+}
+
+func (g *Gemini) StreamTextToText(ctx context.Context, prompt string) (iter.Seq2[*genai.GenerateContentResponse, error]) {
+	return g.client.Models.GenerateContentStream(
+		ctx,
+		g.conf.AIModel,
+		genai.Text(prompt),
+		nil,
+	)
 }
 
 func (g *Gemini) GenerateImageToText(ctx context.Context, prompt string, file *multipart.FileHeader) (string, error) {
